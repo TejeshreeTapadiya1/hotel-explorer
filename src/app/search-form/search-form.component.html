@@ -1,0 +1,32 @@
+<form #searchForm="ngForm" (ngSubmit)="searchHotels(searchForm)" class="main-container">
+	<section class="primary-details">
+		<p>Where are you going?</p>
+		<div class="form-group">
+			<label for="destinationLatitude">Enter latitute (between -90 to +90)</label>
+			<input type="number" class="form-control" id="destinationLatitude" aria-describedby="destinationLatitude"
+				min="-90" max="90" placeholder="Enter latitute" name="destinationLatitude" ngModel required>
+		</div>
+		<div class="form-group">
+			<label for="destinationLongitude">Enter longitute (between -180 to +180)</label>
+			<input type="number" class="form-control" id="destinationLongitude" aria-describedby="destinationLongitude"
+				min="-180" max="180" placeholder="Enter longitute" name="destinationLongitude" ngModel required>
+		</div>
+	</section>
+	<section class="secondary-details">
+		<div class="form-group">
+			<label for="checkIn">Checkin</label>
+			<ngbd-datepicker-popup #checkinDatePicker></ngbd-datepicker-popup>
+		</div>
+		<div class="form-group">
+			<label for="checkOut">Checkout</label>
+			<ngbd-datepicker-popup #checkOutDatePicker></ngbd-datepicker-popup>
+		</div>
+		<div class="form-group">
+			<label for="guestCount">Guests</label>
+			<input type="number" class="form-control" id="guestCount" aria-describedby="guestCount" name="guestNumber"
+				ngModel required>
+		</div>
+	</section>
+
+	<button class="btn btn-primary" [disabled]="searchForm.invalid">Search for the hotels</button>
+</form>
