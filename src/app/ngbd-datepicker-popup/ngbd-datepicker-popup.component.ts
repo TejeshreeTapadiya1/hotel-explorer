@@ -1,4 +1,5 @@
 import {Component, Output, EventEmitter} from '@angular/core';
+import { IDateSelected } from '../model';
 
 @Component({
   selector: 'ngbd-datepicker-popup',
