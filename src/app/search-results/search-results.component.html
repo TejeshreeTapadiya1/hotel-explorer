@@ -1,15 +1,21 @@
-<section class="container-fluid">
+<section class="container-fluid ">
 	<ng-container *ngFor="let hotel of hotelList">
-		<section class="jumbotron">
-			<label>Hotel Name</label>
-			<p>{{hotel.name}}</p>
-			<label>Hotel ID</label>
-			<p>{{hotel.id}}</p>
-			<label>Rating</label>
-			<p>{{hotel.rating}}</p>	
-			<label>Accepted Currency</label>	
-			<p>{{hotel.hotelCurrencyCode}}</p>
+		<section class="jumbotron main-container">
+			<section>
+				<label>Hotel Name: </label>
+				<p>{{hotel.name}}</p>
+				<label>Hotel ID: </label>
+				<p>{{hotel.id}}</p>
+				<label>Rating: </label>
+				<p>{{hotel.rating}}</p>	
+				<label>Accepted Currency: </label>	
+				<p>{{hotel.hotelCurrencyCode}}</p>
+			</section>
+			<section>
+				<img [src]="hotel.images[0].url" height="350" width="350" [alt]="hotel.name">
+			</section>
 		</section>
+		
 	</ng-container>
 	<p *ngIf="message" [innerHTML]="message"></p>
 	<button (click)="showMoreHotels()">Show more hotels</button>
