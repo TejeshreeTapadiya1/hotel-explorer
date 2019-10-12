@@ -16,6 +16,7 @@ export class SearchFormComponent {
   sessionId: string;
   status: string;
   message: string;
+  loading: boolean = false;
 
   constructor(private service: HotelExplorerService, private router: Router) { }
 
@@ -28,6 +29,7 @@ export class SearchFormComponent {
       checkOutDate: `${this.checkOutDatePicker.model.month}/${this.checkOutDatePicker.model.day}/${this.checkOutDatePicker.model.year}`
     }
     this.service.initaliseSession(requestValues).subscribe((data: IInitSession) => {
+      this.loading = true;
       this.sessionId = data.sessionId;
       this.service.setSessionId(this.sessionId);
       this.service.getStatus(this.sessionId).subscribe(data => {
@@ -41,6 +43,7 @@ export class SearchFormComponent {
     if (status==='Complete') {
       this.service.getHotelList(this.sessionId).subscribe((data) => {
         this.service.setList(data.hotels);
+        this.loading = false;
         this.router.navigateByUrl('dashboard/search-results');
       },(error) => {
         this.message = error.error.message

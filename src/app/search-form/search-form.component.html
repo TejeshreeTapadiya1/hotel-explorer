@@ -28,5 +28,11 @@
 		</div>
 	</section>
 
-	<button class="btn btn-primary" [disabled]="searchForm.invalid">Search for the hotels</button>
+	<button class="btn btn-primary" [class.buttonload]="loading" [disabled]="searchForm.invalid">
+		<ng-container *ngIf="loading">
+			<i class="fa fa-refresh fa-spin"></i>
+		</ng-container>
+		Search for the hotels
+	</button>
+
 </form>
