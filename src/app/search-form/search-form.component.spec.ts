@@ -4,6 +4,9 @@ import { SearchFormComponent } from './search-form.component';
 import { HotelExplorerService } from '../app.service';
 import { NgbdDatepickerPopup } from '../ngbd-datepicker-popup/ngbd-datepicker-popup.component';
 import { FormsModule } from '@angular/forms';
+import { IHotel } from '../model';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterTestingModule } from '@angular/router/testing';
 const mockHotelList: IHotel[] = [
   {
     "id": "350298",
@@ -25,7 +28,7 @@ const hotelExplorerServiceStub = {
   setList: jasmine.createSpy('setList'),
   getHotelList: jasmine.createSpy('getHotelList').and.returnValue(mockResponse)
 }
-fdescribe('SearchFormComponent', () => {
+describe('SearchFormComponent', () => {
   let component: SearchFormComponent;
   let fixture: ComponentFixture<SearchFormComponent>;
 
@@ -35,7 +38,8 @@ fdescribe('SearchFormComponent', () => {
        providers: [ {
         provide: HotelExplorerService,
         useValue: hotelExplorerServiceStub
-      }]
+      }],
+      imports: [FormsModule, NgbModule, RouterTestingModule]
     })
     .compileComponents();
   }));
